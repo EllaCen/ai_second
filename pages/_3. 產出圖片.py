@@ -5,15 +5,25 @@ import streamlit_crawler_Ella_addlink
 import _util
 import SEO_prompt_course
 
+def make_function(api_key, keyword_choice,more,target_audience,style_choice, emoji_num,word):
+    if choice1 == True:
+        article_function(api_key, keyword_choice, more, target_audience,style_choice, emoji_num)
+    if choice2 == True:
+        title_function(api_key, keyword_choice,more)
+    if choice3 == True:
+        tag_function(api_key)
+    
+    st.session_state.image = SEO_prompt_course.Unsplash(api_key,word)
+
 #存取圖片
 if "image" not in st.session_state:
     st.session_state.image = ''
-
 
 def main():
 
     _util.background()
     global api_key
+    global word
 
     if 'api_key' in st.session_state:
         api_key = st.session_state.api_key
