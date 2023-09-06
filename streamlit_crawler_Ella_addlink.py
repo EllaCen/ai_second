@@ -15,7 +15,7 @@ from fake_useragent import UserAgent
 # driver = webdriver.Chrome(service=ChromeService(driver_path)) 
 
 
-from webdriver_manager.core.utils import get_browser_version_from_os
+# from webdriver_manager.core.utils import get_browser_version_from_os
 
 from webdriver_manager.chrome import ChromeDriverManager
 import requests,re,time,os
