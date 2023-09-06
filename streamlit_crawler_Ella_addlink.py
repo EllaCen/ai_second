@@ -8,14 +8,15 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
-from fake_useragent import UserAgent
+from selenium.webdriver.chrome.service import Service
+# from fake_useragent import UserAgent
 
 
 # driver_path=ChromeDriverManager().install() #下載latest release版本的chromedriver，並返回其在本機的下載儲存路徑
 # driver = webdriver.Chrome(service=ChromeService(driver_path)) 
 
 
-from webdriver_manager.core.utils import get_browser_version_from_os
+# from webdriver_manager.core.utils import get_browser_version_from_os
 
 from webdriver_manager.chrome import ChromeDriverManager
 import requests,re,time,os
@@ -24,8 +25,8 @@ import requests,re,time,os
 def driver_setting():
     """setting user agents and cookies
     """
-    ua = UserAgent()
-    my_user_agents = ua.random
+    my_user_agents  = "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+    # my_user_agents = ua.random
     my_cookies = [
     {
         'domain': '.google.com.tw',
@@ -84,13 +85,15 @@ def html_downloader(url: str=None):
     chrome_options.add_argument("--disable-features=VizDisplayCompositor")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--window-size=1920x1080")
-
     # driver = webdriver.Chrome(
     #     service=ChromeService(ChromeDriverManager(version="116.0.5845.96").install()),
     #     options=chrome_options 
     #     )
 
-    driver = webdriver.Chrome(service = ChromeService(),options=chrome_options )
+    driver = webdriver.Chrome(
+        service = Service(),
+        options=chrome_options 
+        )
         
     # 登陸頁面，設定 cookies
     driver.get(url)
