@@ -13,7 +13,7 @@ def background():
     st.set_page_config(**PAGE_CONFIG)
 
     # 讀取TMDS圖片
-    image_path = "/Users/ranli/Documents/python_ve/TMR_python_02/SEO_copywriting_course/TMDS-LOGO.png"
+    image_path = "TMDS-LOGO.png"
     image = Image.open(image_path)
 
     # 將TMDS圖片轉換為base64編碼的字串
